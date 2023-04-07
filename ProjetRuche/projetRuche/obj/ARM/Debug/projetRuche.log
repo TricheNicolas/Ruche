@@ -1,0 +1,24 @@
+﻿  Validation des sources
+  Copie des sources à distance vers '10.187.52.121'
+  Validation de l'architecture
+  Validation de l'architecture
+  Démarrage de la build distante
+  Compilation des sources :
+  main.cpp
+C:\Users\trichen\Documents\ProjetRuche\projetRuche\serialib.h(86,67): warning : converting to non-pointer type ‘unsigned int’ from NULL [-Wconversion-null]
+C:\Users\trichen\Documents\ProjetRuche\projetRuche\serialib.h(86,67): warning :    86 |     char    ReadChar(char* pByte, const unsigned int TimeOut_ms = NULL);
+C:\Users\trichen\Documents\ProjetRuche\projetRuche\serialib.h(86,67): warning :       |                                                                   ^~~~
+C:\Users\trichen\Documents\ProjetRuche\projetRuche\serialib.h(100,41): warning : converting to non-pointer type ‘unsigned int’ from NULL [-Wconversion-null]
+C:\Users\trichen\Documents\ProjetRuche\projetRuche\serialib.h(100,41): warning :   100 |         const unsigned int TimeOut_ms = NULL);
+C:\Users\trichen\Documents\ProjetRuche\projetRuche\serialib.h(100,41): warning :       |                                         ^~~~
+C:\Users\trichen\Documents\ProjetRuche\projetRuche\serialib.h(112,89): warning : converting to non-pointer type ‘unsigned int’ from NULL [-Wconversion-null]
+C:\Users\trichen\Documents\ProjetRuche\projetRuche\serialib.h(112,89): warning :   112 |     int     Read(void* Buffer, unsigned int MaxNbBytes, const unsigned int TimeOut_ms = NULL);
+C:\Users\trichen\Documents\ProjetRuche\projetRuche\serialib.h(112,89): warning :       |                                                                                         ^~~~
+C:\Users\trichen\Documents\ProjetRuche\projetRuche\main.cpp(20,17): warning : conversion from ‘int’ to ‘uint16_t’ {aka ‘short unsigned int’} may change value [-Wconversion]
+C:\Users\trichen\Documents\ProjetRuche\projetRuche\main.cpp(20,17): warning :    20 |         value = -(0x10000 - value);
+C:\Users\trichen\Documents\ProjetRuche\projetRuche\main.cpp(20,17): warning :       |                 ^~~~~~~~~~~~~~~~~~
+C:\Users\trichen\Documents\ProjetRuche\projetRuche\main.cpp(52,10): warning : variable ‘verifTrameGPS’ set but not used [-Wunused-but-set-variable]
+C:\Users\trichen\Documents\ProjetRuche\projetRuche\main.cpp(52,10): warning :    52 |     bool verifTrameGPS = false;
+C:\Users\trichen\Documents\ProjetRuche\projetRuche\main.cpp(52,10): warning :       |          ^~~~~~~~~~~~~
+  Liaison des objets
+  projetRuche.vcxproj -> C:\Users\trichen\Documents\ProjetRuche\projetRuche\bin\ARM\Debug\projetRuche.out
