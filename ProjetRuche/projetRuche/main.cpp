@@ -25,6 +25,9 @@ int complement_a_deux(uint16_t value)
 
 int main()
 {
+    //ALEEEEEEEEEDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+    
+    
     /*********************************************Test Lecture auto port*********************************************/
     /*
     FILE* myPipe = NULL;
