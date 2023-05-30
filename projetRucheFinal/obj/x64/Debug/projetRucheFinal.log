@@ -1,0 +1,10 @@
+﻿  Validation des sources
+  Copie des sources à distance vers '10.187.52.121'
+  Validation de l'architecture
+  Validation de l'architecture
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Application Type\Linux\1.0\Linux.targets(188,5): warning : L'architecture de projet actuelle 'x64' est incompatible avec l'architecture du système distant 'ARM' ('ARM'). Remplacez l'architecture de projet par 'ARM' dans le Gestionnaire de configuration.
+  Démarrage de la build distante
+  Compilation des sources :
+  main.cpp
+  Liaison des objets
+  projetRucheFinal.vcxproj -> C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\bin\x64\Debug\projetRucheFinal.out

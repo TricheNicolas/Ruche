@@ -1,0 +1,30 @@
+﻿  Validation des sources
+  Copie des sources à distance vers '10.187.52.121'
+  Validation de l'architecture
+  Validation de l'architecture
+  Démarrage de la build distante
+  Compilation des sources :
+  main.cpp
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\serialib.h(86,67): warning : converting to non-pointer type ‘unsigned int’ from NULL [-Wconversion-null]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\serialib.h(86,67): warning :    86 |     char    ReadChar(char* pByte, const unsigned int TimeOut_ms = NULL);
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\serialib.h(86,67): warning :       |                                                                   ^~~~
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\serialib.h(100,41): warning : converting to non-pointer type ‘unsigned int’ from NULL [-Wconversion-null]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\serialib.h(100,41): warning :   100 |         const unsigned int TimeOut_ms = NULL);
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\serialib.h(100,41): warning :       |                                         ^~~~
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\serialib.h(112,89): warning : converting to non-pointer type ‘unsigned int’ from NULL [-Wconversion-null]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\serialib.h(112,89): warning :   112 |     int     Read(void* Buffer, unsigned int MaxNbBytes, const unsigned int TimeOut_ms = NULL);
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\serialib.h(112,89): warning :       |                                                                                         ^~~~
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\main.cpp(166,42): warning : conversion from ‘int’ to ‘float’ may change value [-Wconversion]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\main.cpp(166,79): warning : conversion from ‘int’ to ‘float’ may change value [-Wconversion]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\main.cpp(167,47): warning : conversion from ‘int’ to ‘float’ may change value [-Wconversion]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\main.cpp(167,84): warning : conversion from ‘int’ to ‘float’ may change value [-Wconversion]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\main.cpp(168,47): warning : conversion from ‘int’ to ‘float’ may change value [-Wconversion]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\main.cpp(168,84): warning : conversion from ‘int’ to ‘float’ may change value [-Wconversion]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\main.cpp(37,10): warning : unused variable ‘boucleMenu’ [-Wunused-variable]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\main.cpp(37,10): warning :    37 |     bool boucleMenu = true, verifTrameGPS = false, chute = false;
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\main.cpp(37,10): warning :       |          ^~~~~~~~~~
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\main.cpp(37,29): warning : unused variable ‘verifTrameGPS’ [-Wunused-variable]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\main.cpp(37,29): warning :    37 |     bool boucleMenu = true, verifTrameGPS = false, chute = false;
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\main.cpp(37,29): warning :       |                             ^~~~~~~~~~~~~
+  Liaison des objets
+  projetRucheFinal.vcxproj -> C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\bin\ARM\Debug\projetRucheFinal.out
