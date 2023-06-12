@@ -6,6 +6,7 @@
 #include "serialib.h"
 #include <sstream>
 #include "Capteur.h"
+#include <vector>
 
 class Gps {
 
@@ -39,11 +40,11 @@ public:
     */
     virtual int lecture(char* trame, const char& caractereFinal, const unsigned int& nbMaxOctets, const unsigned int& tempsReponse);
 
-    /** destructeur de la classe
-    * @param pas de paramètre
-    * @return pas de retour car destructeur
-    */
-    ~Gps();
+    bool verificationReceptionMessage(char trame[], const int& TAILLE, const unsigned int& TEMPSREPONSE, std::string& numero, std::string& recup, std::vector<std::string>& numeroTelephone);
+
+    void recupererDonneesGPS(char trame[], const int& TAILLE, const unsigned int& TEMPSREPONSE, std::string& recup);
+
+    void envoyerMessage(char trame[], const int& TAILLE, const unsigned int& TEMPSREPONSE);
 
     /** Permet d'extraire la latitude et longitude
     * @param const string& qui est la trame entiere
@@ -102,13 +103,19 @@ public:
     */
     virtual std::string toString();
 
+    /** destructeur de la classe
+   * @param pas de paramètre
+   * @return pas de retour car destructeur
+   */
+    ~Gps();
+
 private:
 
     serialib serie;
     std::string port;
     int baud;
     float latitude, longitude;
-
+    
 };
 
 #endif // !_GPS_

@@ -7,7 +7,7 @@ Accelerometre::Accelerometre()
 void Accelerometre::connexion(int& fd, const char I2C_BUS[])
 {
     fd = open(I2C_BUS, O_RDWR);
-    if (fd < 0)throw std::runtime_error("Erreur d'ouverture sur le bus I2C\n");
+    if (fd < 0) throw std::runtime_error("Erreur d'ouverture sur le bus I2C\n");
 
 }
 
@@ -20,7 +20,7 @@ void Accelerometre::selectionAdresse(const int& fd, const int& I2C_ADDR)
 void Accelerometre::ecriture(const int& fd, const int& registre, const int& commande)
 {
     // Ecriture d'une commande sur un registre pour parametrer l'accelerometre
-    if (i2c_smbus_write_byte_data(fd, registre, commande) < 0) throw std::runtime_error("Erreur d'ecriture sur le bus I2C\n");
+    if (i2c_smbus_write_byte_data(fd, registre, commande) < 0)throw std::runtime_error("Erreur d'ecriture sur le bus I2C\n");
 }
 
 int Accelerometre::lecture(const int& fd, const int& registre)
@@ -40,12 +40,11 @@ void Accelerometre::mutateurChute(bool chute)
 
 bool Accelerometre::accesseurChute()
 {
-    return this->chute;
+    return chute;
 }
 
 std::string Accelerometre::toString()
 {
-    if (this->chute == true) return "Un invocateur a quitte la partie.\n";
-    else return "Toujours debout, toujours vivant\n";
-    
+    if (accesseurChute() == true) return "NOK.\n";
+    else return "OK\n";    
 }

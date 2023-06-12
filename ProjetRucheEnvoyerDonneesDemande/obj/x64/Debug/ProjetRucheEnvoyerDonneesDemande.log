@@ -1,0 +1,25 @@
+﻿  Validation des sources
+  Copie des sources à distance vers '10.187.52.121'
+  Validation de l'architecture
+  Validation de l'architecture
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Application Type\Linux\1.0\Linux.targets(188,5): warning : L'architecture de projet actuelle 'x64' est incompatible avec l'architecture du système distant 'ARM' ('ARM'). Remplacez l'architecture de projet par 'ARM' dans le Gestionnaire de configuration.
+  Démarrage de la build distante
+  Compilation des sources :
+  main.cpp
+C:\Users\trichen\Documents\ProjetRuche\ProjetRucheEnvoyerDonneesDemande\..\projetRucheFinal\serialib.h(86,67): warning : converting to non-pointer type ‘unsigned int’ from NULL [-Wconversion-null]
+C:\Users\trichen\Documents\ProjetRuche\ProjetRucheEnvoyerDonneesDemande\..\projetRucheFinal\serialib.h(86,67): warning :    86 |     char    ReadChar(char* pByte, const unsigned int TimeOut_ms = NULL);
+C:\Users\trichen\Documents\ProjetRuche\ProjetRucheEnvoyerDonneesDemande\..\projetRucheFinal\serialib.h(86,67): warning :       |                                                                   ^~~~
+C:\Users\trichen\Documents\ProjetRuche\ProjetRucheEnvoyerDonneesDemande\..\projetRucheFinal\serialib.h(100,41): warning : converting to non-pointer type ‘unsigned int’ from NULL [-Wconversion-null]
+C:\Users\trichen\Documents\ProjetRuche\ProjetRucheEnvoyerDonneesDemande\..\projetRucheFinal\serialib.h(100,41): warning :   100 |         const unsigned int TimeOut_ms = NULL);
+C:\Users\trichen\Documents\ProjetRuche\ProjetRucheEnvoyerDonneesDemande\..\projetRucheFinal\serialib.h(100,41): warning :       |                                         ^~~~
+C:\Users\trichen\Documents\ProjetRuche\ProjetRucheEnvoyerDonneesDemande\..\projetRucheFinal\serialib.h(112,89): warning : converting to non-pointer type ‘unsigned int’ from NULL [-Wconversion-null]
+C:\Users\trichen\Documents\ProjetRuche\ProjetRucheEnvoyerDonneesDemande\..\projetRucheFinal\serialib.h(112,89): warning :   112 |     int     Read(void* Buffer, unsigned int MaxNbBytes, const unsigned int TimeOut_ms = NULL);
+C:\Users\trichen\Documents\ProjetRuche\ProjetRucheEnvoyerDonneesDemande\..\projetRucheFinal\serialib.h(112,89): warning :       |                                                                                         ^~~~
+C:\Users\trichen\Documents\ProjetRuche\ProjetRucheEnvoyerDonneesDemande\main.cpp(39,10): warning : unused variable ‘boucleMenu’ [-Wunused-variable]
+C:\Users\trichen\Documents\ProjetRuche\ProjetRucheEnvoyerDonneesDemande\main.cpp(39,10): warning :    39 |     bool boucleMenu = true, verifTrameGPS = false, chute = false;
+C:\Users\trichen\Documents\ProjetRuche\ProjetRucheEnvoyerDonneesDemande\main.cpp(39,10): warning :       |          ^~~~~~~~~~
+C:\Users\trichen\Documents\ProjetRuche\ProjetRucheEnvoyerDonneesDemande\main.cpp(39,29): warning : unused variable ‘verifTrameGPS’ [-Wunused-variable]
+C:\Users\trichen\Documents\ProjetRuche\ProjetRucheEnvoyerDonneesDemande\main.cpp(39,29): warning :    39 |     bool boucleMenu = true, verifTrameGPS = false, chute = false;
+C:\Users\trichen\Documents\ProjetRuche\ProjetRucheEnvoyerDonneesDemande\main.cpp(39,29): warning :       |                             ^~~~~~~~~~~~~
+  Liaison des objets
+  ProjetRucheEnvoyerDonneesDemande.vcxproj -> C:\Users\trichen\Documents\ProjetRuche\ProjetRucheEnvoyerDonneesDemande\bin\x64\Debug\ProjetRucheEnvoyerDonneesDemande.out
