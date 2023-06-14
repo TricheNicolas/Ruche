@@ -2,6 +2,7 @@
 
 Accelerometre::Accelerometre()
 {
+    this->chute = false;
 }
 
 void Accelerometre::connexion(int& fd, const char I2C_BUS[])
@@ -45,6 +46,6 @@ bool Accelerometre::accesseurChute()
 
 std::string Accelerometre::toString()
 {
-    if (accesseurChute() == true) return "NOK.\n";
-    else return "OK\n";    
+    if (this->chute == true) return "Incorrect\n";
+    else return "Correct\n";    
 }

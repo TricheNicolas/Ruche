@@ -7,10 +7,10 @@ Gps::Gps()
 
 void Gps::connexion(const std::string& port, const int& baud)
 {
-    int erreur = serie.Open(port.c_str(), baud);
+    int erreur = serie.Open(port.c_str(), baud);//Open étant une fonction serialib
     switch (erreur)
     {
-    case 254: throw std::runtime_error("Appareil non reconnu, verifiez branchement ou bien le nom du port !\n");
+    case 254: throw std::runtime_error("Appareil non reconnu, verifiez branchement ou bien le nom du port !\n");//throw permet de relever l'erreur
         break;
     case 252: throw std::runtime_error("Erreur baud\n");
         break;
@@ -22,7 +22,7 @@ void Gps::connexion(const std::string& port, const int& baud)
 
 void Gps::ecriture(const char commandeAT[])
 {
-    int erreur = serie.WriteString(commandeAT);
+    int erreur = serie.WriteString(commandeAT);//WriteString étant une fonction serialib
     std::string commande = commandeAT;
     if (erreur < 0)
     {
@@ -32,7 +32,7 @@ void Gps::ecriture(const char commandeAT[])
 
 int Gps::lecture(char* trame, const char& caractereFinal, const unsigned int& nbMaxOctets, const unsigned int& tempsReponse)
 {
-    int erreur = serie.ReadString(trame, caractereFinal, nbMaxOctets, tempsReponse);
+    int erreur = serie.ReadString(trame, caractereFinal, nbMaxOctets, tempsReponse);//ReadString étant une fonction serialib
     switch (erreur)
     {
     case 0:
@@ -56,28 +56,39 @@ int Gps::lecture(char* trame, const char& caractereFinal, const unsigned int& nb
     }
 }
 
+bool Gps::quitter(int& i,const int& NOMBREREPETITIONS,bool& fin)
+{
+    i++;
+    if (i == NOMBREREPETITIONS)
+    {
+        i = 0;
+        fin = true;
+        return true;
+    }
+    return false;
+}
+
 bool Gps::verificationReceptionMessage(char trame[], const int& TAILLE, const unsigned int& TEMPSREPONSE, std::string& numero, std::string& recup, std::vector<std::string>& numeroTelephone)
 {
-    memset(trame, 0, sizeof(trame));
-    ecriture("ATE1\r\n");
+    memset(trame, 0, sizeof(trame));//permet de vider la trame
+    ecriture("ATE1\r\n");//affiche les commandes AT qu'on envoie
     for (int i = 0; i < 3; i++)
     {
-        std::cout << i << " " << "\t\t" << trame << std::endl;
         lecture(trame, '\n', TAILLE, TEMPSREPONSE);
     }
     std::vector<std::string> vecTrame;
     memset(trame, 0, sizeof(trame));
-    ecriture("AT+CMGL=\"REC UNREAD\"\r\n");
+    ecriture("AT+CMGL=\"REC UNREAD\"\r\n");//permet la lecture des messages non lus
     sleep(1);
     for (int i = 0; i < 3; i++)
     {
         lecture(trame, '\n', TAILLE, TEMPSREPONSE);
-        std::cout << i << " " << "\t\t" << trame << std::endl;
+        std::cout << i << " \t\t" << trame << std::endl;
         vecTrame.push_back(trame);
     }
     for (int i = 0; i < vecTrame.size(); i++)
     {
-        if (vecTrame.at(i) != "\r\n" && vecTrame.at(i) != "OK\r\n" && vecTrame.at(i) != "AT+CMGL=\"REC UNREAD\"\r\n")
+        if (vecTrame.at(i) != "\r\n" && vecTrame.at(i) != "OK\r\n" && vecTrame.at(i) != "AT+CMGL=\"REC UNREAD\"\r\n")//cela permet de voir si on a reçu un message ou non
         {
             recup = vecTrame.at(i);
             i = vecTrame.size();
@@ -90,18 +101,17 @@ bool Gps::verificationReceptionMessage(char trame[], const int& TAILLE, const un
             int taille = numeroTelephone.size();
             for (int i = 0; i < taille; i++)
             {
-                if (numeroTelephone.at(i) == numero)return true;
+                if (numeroTelephone.at(i) == numero)return true;//on compare avec les numéros déjà enregistrés
                 else return false;
             }
         }
     }
 
     memset(trame, 0, sizeof(trame));
-    ecriture("AT+CMGD=4\r\n");
+    ecriture("AT+CMGD=4\r\n");//on supprime tous les messages stockés par le module car on a une limite de 30
     sleep(1);
     for (int i = 0; i < 2; i++)
     {
-        std::cout << i << " " << "\t\t" << trame << std::endl;
         lecture(trame, '\n', TAILLE, TEMPSREPONSE);
     }
 
@@ -137,27 +147,26 @@ void Gps::recupererDonneesGPS(char trame[], const int& TAILLE, const unsigned in
     for (int i = 0; i < 10; i++)
     {
         lecture(trame, '\n', TAILLE, TEMPSREPONSE);
-        vecTrame.push_back(trame);
+        vecTrame.push_back(trame);//on met le contenu de la trame dans un vecteur pour pouvoir la traiter par la suite
     }
     for (int i = 0; i < vecTrame.size(); i++)
     {
-        if (vecTrame.at(i) != "OK\r\n" && vecTrame.at(i) != "AT$GPSNMUN=1\r\n" && vecTrame.at(i) != "\r\n")
+        if (vecTrame.at(i) != "OK\r\n" && vecTrame.at(i) != "AT$GPSNMUN=1\r\n" && vecTrame.at(i) != "\r\n")//on recupere la trame reçue
         {
             recup = vecTrame.at(i);
             i = vecTrame.size();
         }
     }
-
     /*********************************************commande arret envoi trame*********************************************/
     memset(trame, 0, sizeof(trame));
-    ecriture("AT$GPSNMUN=0\r\n");
+    ecriture("AT$GPSNMUN=0\r\n");//on coupe l'envoi des trames GPS
     for (int i = 0; i < 2; i++)lecture(trame, '\n', TAILLE, TEMPSREPONSE);
 }
 
-void Gps::envoyerMessage(char trame[], const int& TAILLE, const unsigned int& TEMPSREPONSE)
+void Gps::envoyerMessage(char trame[], const int& TAILLE, const unsigned int& TEMPSREPONSE, Accelerometre accelerometre,std::vector<std::string> repertoire, bool envoieMessageErreur)
 {
     memset(trame, 0, sizeof(trame));
-    ecriture("AT+CMGF=1\r\n");
+    ecriture("AT+CMGF=1\r\n");// on passe en mode texte car =2 correspond au mode hexa
     sleep(1);
     for (int i = 0; i < 1; i++)
     {
@@ -166,8 +175,18 @@ void Gps::envoyerMessage(char trame[], const int& TAILLE, const unsigned int& TE
 
     /*********************************************commande pour envoyer un message *********************************************/
     memset(trame, 0, sizeof(trame));
-    Accelerometre accelerometre;
-    std::string message = "AT+CMGS=\"+33771829830\"\r\n\t" + toString() + accelerometre.toString() + "\x1A";
+    std::string message;
+    int taille = repertoire.size();
+    for (int i = 0; i < taille; i++)
+    {   
+        if (envoieMessageErreur==true)
+        {
+            message = "AT+CMGS=\"" + repertoire.at(i) + "\"\r\n\tErreur lors de l envoi des donnees\x1A";// contenu du message à envoyer aux numéros répertoriés
+        }
+        else
+        {
+            message = "AT+CMGS=\"" + repertoire.at(i) + "\"\r\n\t" + toString() + accelerometre.toString() + "\x1A";// contenu du message à envoyer aux numéros répertoriés
+        }
     ecriture(message.c_str());
     sleep(1);
     for (int i = 0; i < 1; i++)
@@ -175,7 +194,9 @@ void Gps::envoyerMessage(char trame[], const int& TAILLE, const unsigned int& TE
         lecture(trame, '\n', TAILLE, TEMPSREPONSE);
         //std::cout << i << " \t\t" << trame << std::endl;
     }
-    memset(trame, 0, sizeof(trame));
+    memset(trame, 0, sizeof(trame)); 
+    sleep(7);
+    }
 }
 
 std::vector<std::string> Gps::scinder(const std::string& s, char delimiter)

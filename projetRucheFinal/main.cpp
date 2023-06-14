@@ -6,7 +6,6 @@
 
 int main()
 {
-
     /*********************************************Lecture auto port*********************************************/
     
     FILE* myPipe = NULL;
@@ -41,8 +40,16 @@ int main()
 
     bool boucleMenu = true, verifTrameGPS = false, chute = false;
     bool fin = false;
+    bool envoieMessageErreur = false;
 
     int fd, I2C_ADDR = 0x6A/*6A car résultat du i2cdetect*/, registre, commande, valX = 0, valY = 0, valZ = 0, i=0;
+
+    std::vector<std::string> repertoire;
+    repertoire.push_back("+33771829830");
+    repertoire.push_back("+33771829830");
+    //repertoire.push_back("+33771829830");
+    //repertoire.push_back("+33771829830");
+    //repertoire.push_back("+33771829830");
 
     enum class etape {
         AttenteOuvertureVoieSerie,RecuperationDonnesGPS,VerificationDonneesGPS,AttentionConnexionI2C,RecuperationDonneesI2C,VerificationEtatRuche,VerificationCarteSIM,EnvoyerMessage
@@ -63,7 +70,6 @@ int main()
     }
     else std::cout << "Probleme de création ecriture du fichier\n";// sinon on affiche un message à l'utilisateur 
 
-    gps.~Gps();
     etape etapeActive = etape::AttenteOuvertureVoieSerie;
     do
     {       
@@ -74,12 +80,13 @@ int main()
             try
             {
                 gps.connexion(portUsb, BAUD);      
-
                 etapeActive = etape::RecuperationDonnesGPS;
+                i = 0;
             }
             catch (const std::exception& e)
             {
                 std::cerr << "\nErreur AttenteConnexionSerie !\n\n" << e.what(); // Si pb affichage du message
+                envoieMessageErreur = gps.quitter(i, NOMBREREPETITIONS, fin);
             }
             break;
         case etape::RecuperationDonnesGPS:
@@ -87,16 +94,12 @@ int main()
             { 
                 gps.recupererDonneesGPS(trame, TAILLE, TEMPSREPONSE, recup);
                 etapeActive = etape::VerificationDonneesGPS;
+                //i = 0;
             }
             catch (const std::exception& e)
             {
                 std::cerr << "\nErreur RecuperationDonnesGPS !\n\n" << e.what(); // Si pb affichage du message
-                i++;
-                if (i == NOMBREREPETITIONS)
-                {
-                    i = 0;
-                    fin = true;
-                }
+                envoieMessageErreur = gps.quitter(i, NOMBREREPETITIONS, fin);
             }
             break;
         case etape::VerificationDonneesGPS:
@@ -104,7 +107,6 @@ int main()
             {
                 /*********************************************Gestion Trame*********************************************/
                 float latConv, longConv;
-
                 gps.trouverLatLongi(recup, latitude, longitude);
                 latConv = gps.LatGPS(latitude);
                 longConv = gps.LongGPS(longitude);
@@ -114,11 +116,13 @@ int main()
                 gps.mutateurLatitude(latConv);
                 gps.mutateurLongitude(longConv);
                 etapeActive = etape::AttentionConnexionI2C;
+                i = 0;
             }
             catch (const std::exception& e)
             {
                 std::cerr << "\nErreur VerificationDonneesGPS !\n\n" << e.what(); // Si pb affichage du message
                 etapeActive = etape::RecuperationDonnesGPS;
+                envoieMessageErreur = gps.quitter(i, NOMBREREPETITIONS, fin);
             }
             break;
         case etape::AttentionConnexionI2C:
@@ -129,16 +133,12 @@ int main()
                 accelerometre.connexion(fd, I2C_BUS);// ouverture du bus I2C
                 accelerometre.selectionAdresse(fd, I2C_ADDR);// selection de l'adresse I2C
                 etapeActive = etape::RecuperationDonneesI2C;
+                i = 0;
             }
             catch (const std::exception& e)
             {               
                 std::cerr << "\nErreur AttentionConnexionI2C !\n\n" << e.what(); // Si pb affichage du message
-                i++;
-                if (i == NOMBREREPETITIONS)
-                {
-                    i = 0;
-                    fin = true;
-                }
+                envoieMessageErreur = gps.quitter(i, NOMBREREPETITIONS, fin);
             }
             break;
         case etape::RecuperationDonneesI2C:
@@ -154,16 +154,12 @@ int main()
                 valZ = accelerometre.lecture(fd, registre = 0x2C);//registre correspondant à l'axe de Z
                 std::cout << "lecture Z ok\n\tZ = " << valZ << "\n";
                 etapeActive = etape::VerificationEtatRuche;
+                i = 0;
             }
             catch (const std::exception& e)
             {
                 std::cerr << "\nErreur RecuperationDonneesI2C !\n\n" << e.what(); // Si pb affichage du message
-                i++;
-                if (i == NOMBREREPETITIONS)
-                {
-                    i = 0;
-                    fin = true;
-                }
+                envoieMessageErreur = gps.quitter(i, NOMBREREPETITIONS, fin);
             }
             break;
         case etape::VerificationEtatRuche:
@@ -193,7 +189,8 @@ int main()
                     accelerometre.mutateurChute(chute);//on modifie la valeur pour la renvoyer dans le toString plus tard
                 }
                 else {
-                    chute = false;
+                    //chute = false;
+                    std::cout << "La ruche n'a pas bouge mon grand\n";
                 }
                 /*********************************************Écriture Fichier.txt*********************************************/
                 std::ofstream monFichier("fichierAxe.txt", std::ios_base::trunc);// Le fichier a été créé ou écrasé
@@ -204,17 +201,13 @@ int main()
                 }                
                 else std::cout << "Probleme de création ecriture du fichier\n";// sinon on affiche un message à l'utilisateur
                 etapeActive = etape::VerificationCarteSIM;
+                i = 0;
                 close(fd);
             }
             catch (const std::exception& e)
             {
                 std::cerr << "\nErreur VerificationEtatRuche !\n\n" << e.what(); // Si pb affichage du message
-                i++;
-                if (i == NOMBREREPETITIONS)
-                {
-                    i = 0;
-                    fin = true;
-                }
+                envoieMessageErreur = gps.quitter(i, NOMBREREPETITIONS, fin);
             }
             break;
         case etape::VerificationCarteSIM:
@@ -228,30 +221,23 @@ int main()
                 for (int i = 0; i < 5; i++)
                 {
                     gps.lecture(trame, '\n', TAILLE, TEMPSREPONSE);
-                    //std::cout << i << " " << "\t\t" << trame << std::endl;
                     vecTrame.push_back(trame);
                 }
                 for (int i = 0; i < vecTrame.size(); i++)
                 {
                     if (vecTrame.at(i) != "OK\r\n" && vecTrame.at(i) != "AT+CPIN?\r\n" && vecTrame.at(i) != "\r\n" && vecTrame.at(i) != "+CPIN: READY\r\n")
                     {
-                        //std::cout <<"AAAAAAAAAAAAAAAAAAA"<< vecTrame.at(i);
                         recup = vecTrame.at(i);
                         i = vecTrame.size();
                         gps.ecriture("AT+CPIN=8428\r\n");
                         sleep(1);
-                        for (int i = 0; i < 4; i++)
+                        for (int i = 0; i < 1; i++)
                         {
                             gps.lecture(trame, '\n', TAILLE, TEMPSREPONSE);
-                            //std::cout << i << " " << "\t\t" << trame << std::endl;
-                        }
-                        gps.~Gps();
-                        //etapeActive = etape::AttenteOuvertureVoieSerie;
+                        }                    
                         fin = true;
-                        //break;
                     }
                     else {
-                        //std::cout<< "BBBBBBBBBBBBB" << vecTrame.at(i);
                         etapeActive = etape::EnvoyerMessage;
                     }
                 }
@@ -259,40 +245,31 @@ int main()
             catch (const std::exception& e)
             {                
                 std::cerr << "\nErreur en rapport avec le GPS !\n\n" << e.what();// Si probleme affichage du message
-                i++;
-                if (i == NOMBREREPETITIONS)
-                {
-                    i = 0;
-                    fin = true;
-                }
+                envoieMessageErreur = gps.quitter(i, NOMBREREPETITIONS, fin);
             }
             break;
         case etape::EnvoyerMessage:
             /*********************************************Passer en mode Texte *********************************************/
             try
-            {             
-                std::cout << " AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n";
-                gps.envoyerMessage(trame, TAILLE, TEMPSREPONSE);
-                std::cout << " ptn pitie\n";
-                gps.~Gps();
+            {                  
+                gps.envoyerMessage(trame, TAILLE, TEMPSREPONSE, accelerometre, repertoire,envoieMessageErreur=false);
+                i = 0;
                 fin = true;
             }
             catch (const std::exception& e)
             {
                 std::cerr << "\nErreur EnvoyerMessage !\n\n" << e.what();// Si probleme affichage du message
-                i++;
-                if (i == NOMBREREPETITIONS)
-                {
-                    i = 0;
-                    fin = true;
-                }
+                envoieMessageErreur = gps.quitter(i, NOMBREREPETITIONS, fin);
             }
             break;
         default:
             std::cerr << "\n\t cho le spawnkill\n";
+            fin = true;
             break;
         }
     } while (fin == false);
+
+    if (envoieMessageErreur == true)gps.envoyerMessage(trame, TAILLE, TEMPSREPONSE, accelerometre, repertoire,envoieMessageErreur);
 
     const char* ficTmp = "/home/pi/fichierASupprimer.txt";
     int result = std::remove(ficTmp);
