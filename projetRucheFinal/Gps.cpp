@@ -1,5 +1,6 @@
 #include "Gps.h"
 #include "Accelerometre.h"
+#include "GestionBalance.h"
 
 Gps::Gps()
 {
@@ -106,15 +107,15 @@ bool Gps::verificationReceptionMessage(char trame[], const int& TAILLE, const un
             }
         }
     }
+    vecTrame.clear();
 
     memset(trame, 0, sizeof(trame));
-    ecriture("AT+CMGD=4\r\n");//on supprime tous les messages stockés par le module car on a une limite de 30
+    ecriture("AT+CMGD=1,4\r\n");//on supprime tous les messages stockés par le module car on a une limite de 30
     sleep(1);
     for (int i = 0; i < 2; i++)
     {
         lecture(trame, '\n', TAILLE, TEMPSREPONSE);
     }
-
 }
 
 void Gps::recupererDonneesGPS(char trame[], const int& TAILLE, const unsigned int& TEMPSREPONSE, std::string& recup)
@@ -149,6 +150,7 @@ void Gps::recupererDonneesGPS(char trame[], const int& TAILLE, const unsigned in
         lecture(trame, '\n', TAILLE, TEMPSREPONSE);
         vecTrame.push_back(trame);//on met le contenu de la trame dans un vecteur pour pouvoir la traiter par la suite
     }
+
     for (int i = 0; i < vecTrame.size(); i++)
     {
         if (vecTrame.at(i) != "OK\r\n" && vecTrame.at(i) != "AT$GPSNMUN=1\r\n" && vecTrame.at(i) != "\r\n")//on recupere la trame reçue
@@ -157,13 +159,15 @@ void Gps::recupererDonneesGPS(char trame[], const int& TAILLE, const unsigned in
             i = vecTrame.size();
         }
     }
+
     /*********************************************commande arret envoi trame*********************************************/
     memset(trame, 0, sizeof(trame));
     ecriture("AT$GPSNMUN=0\r\n");//on coupe l'envoi des trames GPS
     for (int i = 0; i < 2; i++)lecture(trame, '\n', TAILLE, TEMPSREPONSE);
 }
 
-void Gps::envoyerMessage(char trame[], const int& TAILLE, const unsigned int& TEMPSREPONSE, Accelerometre accelerometre,std::vector<std::string> repertoire, bool envoieMessageErreur)
+
+void Gps::envoyerMessage(char trame[], const int& TAILLE, const unsigned int& TEMPSREPONSE, Accelerometre accelerometre,std::vector<std::string> repertoire, bool envoieMessageErreur, GestionBalance gestionBalance)
 {
     memset(trame, 0, sizeof(trame));
     ecriture("AT+CMGF=1\r\n");// on passe en mode texte car =2 correspond au mode hexa
@@ -185,7 +189,8 @@ void Gps::envoyerMessage(char trame[], const int& TAILLE, const unsigned int& TE
         }
         else
         {
-            message = "AT+CMGS=\"" + repertoire.at(i) + "\"\r\n\t" + toString() + accelerometre.toString() + "\x1A";// contenu du message à envoyer aux numéros répertoriés
+            message = "AT+CMGS=\"" + repertoire.at(i) + "\"\r\n\t" + toString() + accelerometre.toString() + gestionBalance.toString() + "\x1A";// contenu du message à envoyer aux numéros répertoriés
+            std::cout << message;
         }
     ecriture(message.c_str());
     sleep(1);

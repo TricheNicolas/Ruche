@@ -77,6 +77,7 @@
   <ItemGroup>
     <ClCompile Include="..\projetRucheFinal\Accelerometre.cpp" />
     <ClCompile Include="..\projetRucheFinal\Capteur.cpp" />
+    <ClCompile Include="..\projetRucheFinal\GestionBalance.cpp" />
     <ClCompile Include="..\projetRucheFinal\Gps.cpp" />
     <ClCompile Include="..\projetRucheFinal\serialib.cpp" />
     <ClCompile Include="..\projetRucheFinal\smbus.cpp" />
@@ -85,6 +86,7 @@
   <ItemGroup>
     <ClInclude Include="..\projetRucheFinal\Accelerometre.h" />
     <ClInclude Include="..\projetRucheFinal\Capteur.h" />
+    <ClInclude Include="..\projetRucheFinal\GestionBalance.h" />
     <ClInclude Include="..\projetRucheFinal\Gps.h" />
     <ClInclude Include="..\projetRucheFinal\serialib.h" />
     <ClInclude Include="..\projetRucheFinal\smbus.h" />

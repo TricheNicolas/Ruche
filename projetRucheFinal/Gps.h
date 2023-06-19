@@ -5,9 +5,11 @@
 #include <vector>
 #include "serialib.h"
 #include <sstream>
-#include "Capteur.h"
 #include <vector>
 #include "Accelerometre.h"
+#include "GestionBalance.h"
+#include "Capteur.h"
+#include <iostream>
 
 class Gps {
 
@@ -75,7 +77,7 @@ public:
     * @param std::vector<std::string> repertoire correspond à tous les numéros auxquelles on doit envoyer le message
     * @return ne retourne rien
     */
-    void envoyerMessage(char trame[], const int& TAILLE, const unsigned int& TEMPSREPONSE, Accelerometre accelerometre, std::vector<std::string> repertoire, bool envoieMessageErreur);
+    void envoyerMessage(char trame[], const int& TAILLE, const unsigned int& TEMPSREPONSE, Accelerometre accelerometre, std::vector<std::string> repertoire, bool envoieMessageErreur, GestionBalance gestionBalance);
 
     /** Permet d'extraire la latitude et longitude
     * @param const string& qui est la trame entiere

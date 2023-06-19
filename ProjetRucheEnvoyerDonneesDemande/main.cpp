@@ -1,23 +1,12 @@
 ﻿#include "../projetRucheFinal/Gps.h"
 #include "../projetRucheFinal/Accelerometre.h"
+#include "../projetRucheFinal/GestionBalance.h"
 #include <fstream>
 
 int main()
 {
 
-    FILE* myPipe = NULL;
-    char buffer[1000];
-    myPipe = popen("cd | ls /dev/ttyUSB*", "r");
-    if (myPipe == NULL) {
-        //errorstuff
-    }
-    while (fgets(buffer, 1000, myPipe) != NULL) {
-        (void)printf("\n\nvotre usb est : \n\n%s \n", buffer);
-    }
-    std::string portUsb = buffer;
-    std::cout << "Test :" << portUsb << " est le port\n";
-    portUsb = portUsb.substr(0, 12);
-    pclose(myPipe);
+
 
     /*********************************************Declaration des variables *********************************************/
 
@@ -32,6 +21,7 @@ int main()
     std::string valXAncien, valYAncien, valZAncien;
     std::string messageAComparer = "Envoie\r\n";
     std::string recup;
+    std::string mesureBalance;
     std::string numero;
 
     Gps gps;
@@ -50,8 +40,29 @@ int main()
     numeroTelephone.push_back("+33768843752");
 
     enum class etape {
-        AttenteOuvertureVoieSerie, VerificationReceptionMessage, RecuperationDonneesGPS, VerificationDonneesGPS, AttentionConnexionI2C, RecuperationDonneesI2C, VerificationEtatRuche, VerificationCarteSIM, EnvoyerMessage
+        AttenteOuvertureVoieSerie, VerificationReceptionMessage, RecuperationDonneesGPS, VerificationDonneesGPS, RecuperationDonnesBalance, AttenteConnexionI2C, RecuperationDonneesI2C, VerificationEtatRuche, VerificationCarteSIM, EnvoyerMessage
     };
+
+    /*********************************************Lecture auto port*********************************************/
+
+    std::string portUsb;
+    FILE* myPipe = NULL;
+    char buffer[1000];
+    myPipe = popen("cd | ls /dev/ttyUSB*", "r");
+    if (myPipe == NULL) {
+        //errorstuff
+    }
+    while (fgets(buffer, 1000, myPipe) != NULL) {
+        (void)printf("\n\nvotre usb est : \n\n%s \n", buffer);
+        portUsb += buffer;
+    }
+    std::vector <std::string>differentsPorts = gps.scinder(portUsb, '\n');
+    pclose(myPipe);
+
+    GestionBalance gestionBalance(differentsPorts.at(1),9600);   
+    //GestionBalance gestionBalance;
+
+    /*********************************************Fichier au cas où les programmes sont lancés en même temps *********************************************/
 
     std::ifstream monFichierLec("/home/pi/fichierASupprimer.txt");
     if (monFichierLec.is_open()) {
@@ -77,7 +88,7 @@ int main()
         case etape::AttenteOuvertureVoieSerie:
             try
             {                
-                gps.connexion(portUsb, BAUD);
+                gps.connexion(differentsPorts.at(0), BAUD);
                 etapeActive = etape::VerificationReceptionMessage;
                 i = 0;
             }
@@ -143,7 +154,7 @@ int main()
 
                 gps.mutateurLatitude(latConv);
                 gps.mutateurLongitude(longConv);
-                etapeActive = etape::AttentionConnexionI2C;
+                etapeActive = etape::RecuperationDonnesBalance;
                 i = 0;
             }
             catch (const std::exception& e)
@@ -153,7 +164,22 @@ int main()
                 envoieMessageErreur = gps.quitter(i, NOMBREREPETITIONS, fin);
             }
             break;
-        case etape::AttentionConnexionI2C:
+        case etape::RecuperationDonnesBalance:
+            try
+            {
+                gestionBalance.connexion();
+                gestionBalance.lecture();
+                gestionBalance.fermeture();
+                mesureBalance = gestionBalance.accesseurPoids();
+                std::cout << "Mesure balance " << mesureBalance << "\n";
+                etapeActive = etape::AttenteConnexionI2C;
+            }
+            catch (const std::exception&)
+            {
+                std::cerr << "\nErreur RecuperationDonnesBalance !\n\n"; // Si pb affichage du message
+                envoieMessageErreur = gps.quitter(i, NOMBREREPETITIONS, fin);
+            }
+        case etape::AttenteConnexionI2C:
             try
             {
                 /*********************************************Partie I2C*********************************************/
@@ -172,6 +198,13 @@ int main()
         case etape::RecuperationDonneesI2C:
             try
             {
+                /*gestionBalance.connexion();
+                gestionBalance.lecture();
+                gestionBalance.fermeture();
+                std::string mesureBalance = gestionBalance.accesseurPoids();
+                std::cout << "Mesure balance " << mesureBalance << "\n";
+                std::cout << gestionBalance.toString();*/
+
                 accelerometre.ecriture(fd, registre = 0x10, commande = 0x5F);// Activer l'accéléromètre
                 valX = accelerometre.lecture(fd, registre = 0x28);//registre correspondant à l'axe de X
                 std::cout << "lecture X ok\n\tX = " << valX << "\n";
@@ -269,7 +302,7 @@ int main()
             /*********************************************Passer en mode Texte *********************************************/
             try
             {
-                gps.envoyerMessage(trame, TAILLE, TEMPSREPONSE, accelerometre, numeroTelephone, envoieMessageErreur = false);
+                gps.envoyerMessage(trame, TAILLE, TEMPSREPONSE, accelerometre, numeroTelephone, envoieMessageErreur = false, gestionBalance);
                 i = 0;
                 fin = true;
             }
@@ -286,7 +319,7 @@ int main()
         }
     } while (fin == false);
 
-    if (envoieMessageErreur == true)gps.envoyerMessage(trame, TAILLE, TEMPSREPONSE, accelerometre, numeroTelephone, envoieMessageErreur);
+    if (envoieMessageErreur == true)gps.envoyerMessage(trame, TAILLE, TEMPSREPONSE, accelerometre, numeroTelephone, envoieMessageErreur, gestionBalance);
 
     const char* ficTmp = "/home/pi/fichierASupprimer.txt";
     int result = std::remove(ficTmp);

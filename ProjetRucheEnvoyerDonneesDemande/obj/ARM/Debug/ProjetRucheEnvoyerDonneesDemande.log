@@ -14,87 +14,87 @@ C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\serialib.h(100,41): warn
 C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\serialib.h(112,89): warning : converting to non-pointer type ‘unsigned int’ from NULL [-Wconversion-null]
 C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\serialib.h(112,89): warning :   112 |     int     Read(void* Buffer, unsigned int MaxNbBytes, const unsigned int TimeOut_ms = NULL);
 C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\serialib.h(112,89): warning :       |                                                                                         ^~~~
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(73,29): warning : ‘sizeof’ on array function parameter ‘trame’ will return size of ‘char*’ [-Wsizeof-array-argument]
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(73,29): warning :    73 |     memset(trame, 0, sizeof(trame));//permet de vider la trame
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(73,29): warning :       |                            ~^~~~~~
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(71,45): message : declared here
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(73,22): warning : argument to ‘sizeof’ in ‘void* memset(void*, int, size_t)’ call is the same expression as the destination; did you mean to provide an explicit length? [-Wsizeof-pointer-memaccess]
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(73,22): warning :    73 |     memset(trame, 0, sizeof(trame));//permet de vider la trame
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(73,22): warning :       |                      ^~~~~~~~~~~~~
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(80,29): warning : ‘sizeof’ on array function parameter ‘trame’ will return size of ‘char*’ [-Wsizeof-array-argument]
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(80,29): warning :    80 |     memset(trame, 0, sizeof(trame));
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(80,29): warning :       |                            ~^~~~~~
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(71,45): message : declared here
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(80,22): warning : argument to ‘sizeof’ in ‘void* memset(void*, int, size_t)’ call is the same expression as the destination; did you mean to provide an explicit length? [-Wsizeof-pointer-memaccess]
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(80,22): warning :    80 |     memset(trame, 0, sizeof(trame));
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(80,22): warning :       |                      ^~~~~~~~~~~~~
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(89,23): warning : comparison of integer expressions of different signedness: ‘int’ and ‘std::vector<std::__cxx11::basic_string<char> >::size_type’ {aka ‘unsigned int’} [-Wsign-compare]
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(89,23): warning :    89 |     for (int i = 0; i < vecTrame.size(); i++)
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(89,23): warning :       |                     ~~^~~~~~~~~~~~~~~~~
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(110,29): warning : ‘sizeof’ on array function parameter ‘trame’ will return size of ‘char*’ [-Wsizeof-array-argument]
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(110,29): warning :   110 |     memset(trame, 0, sizeof(trame));
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(110,29): warning :       |                            ~^~~~~~
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(71,45): message : declared here
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(110,22): warning : argument to ‘sizeof’ in ‘void* memset(void*, int, size_t)’ call is the same expression as the destination; did you mean to provide an explicit length? [-Wsizeof-pointer-memaccess]
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(110,22): warning :   110 |     memset(trame, 0, sizeof(trame));
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(110,22): warning :       |                      ^~~~~~~~~~~~~
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(123,29): warning : ‘sizeof’ on array function parameter ‘trame’ will return size of ‘char*’ [-Wsizeof-array-argument]
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(123,29): warning :   123 |     memset(trame, 0, sizeof(trame));
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(123,29): warning :       |                            ~^~~~~~
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(120,36): message : declared here
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(123,22): warning : argument to ‘sizeof’ in ‘void* memset(void*, int, size_t)’ call is the same expression as the destination; did you mean to provide an explicit length? [-Wsizeof-pointer-memaccess]
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(123,22): warning :   123 |     memset(trame, 0, sizeof(trame));
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(123,22): warning :       |                      ^~~~~~~~~~~~~
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(131,29): warning : ‘sizeof’ on array function parameter ‘trame’ will return size of ‘char*’ [-Wsizeof-array-argument]
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(131,29): warning :   131 |     memset(trame, 0, sizeof(trame));
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(131,29): warning :       |                            ~^~~~~~
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(120,36): message : declared here
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(131,22): warning : argument to ‘sizeof’ in ‘void* memset(void*, int, size_t)’ call is the same expression as the destination; did you mean to provide an explicit length? [-Wsizeof-pointer-memaccess]
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(131,22): warning :   131 |     memset(trame, 0, sizeof(trame));
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(131,22): warning :       |                      ^~~~~~~~~~~~~
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(142,29): warning : ‘sizeof’ on array function parameter ‘trame’ will return size of ‘char*’ [-Wsizeof-array-argument]
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(142,29): warning :   142 |     memset(trame, 0, sizeof(trame));
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(142,29): warning :       |                            ~^~~~~~
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(120,36): message : declared here
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(142,22): warning : argument to ‘sizeof’ in ‘void* memset(void*, int, size_t)’ call is the same expression as the destination; did you mean to provide an explicit length? [-Wsizeof-pointer-memaccess]
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(142,22): warning :   142 |     memset(trame, 0, sizeof(trame));
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(142,22): warning :       |                      ^~~~~~~~~~~~~
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(152,23): warning : comparison of integer expressions of different signedness: ‘int’ and ‘std::vector<std::__cxx11::basic_string<char> >::size_type’ {aka ‘unsigned int’} [-Wsign-compare]
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(152,23): warning :   152 |     for (int i = 0; i < vecTrame.size(); i++)
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(152,23): warning :       |                     ~~^~~~~~~~~~~~~~~~~
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(161,29): warning : ‘sizeof’ on array function parameter ‘trame’ will return size of ‘char*’ [-Wsizeof-array-argument]
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(161,29): warning :   161 |     memset(trame, 0, sizeof(trame));
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(161,29): warning :       |                            ~^~~~~~
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(120,36): message : declared here
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(161,22): warning : argument to ‘sizeof’ in ‘void* memset(void*, int, size_t)’ call is the same expression as the destination; did you mean to provide an explicit length? [-Wsizeof-pointer-memaccess]
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(161,22): warning :   161 |     memset(trame, 0, sizeof(trame));
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(161,22): warning :       |                      ^~~~~~~~~~~~~
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(168,29): warning : ‘sizeof’ on array function parameter ‘trame’ will return size of ‘char*’ [-Wsizeof-array-argument]
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(168,29): warning :   168 |     memset(trame, 0, sizeof(trame));
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(168,29): warning :       |                            ~^~~~~~
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(166,31): message : declared here
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(168,22): warning : argument to ‘sizeof’ in ‘void* memset(void*, int, size_t)’ call is the same expression as the destination; did you mean to provide an explicit length? [-Wsizeof-pointer-memaccess]
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(168,22): warning :   168 |     memset(trame, 0, sizeof(trame));
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(168,22): warning :       |                      ^~~~~~~~~~~~~
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(177,29): warning : ‘sizeof’ on array function parameter ‘trame’ will return size of ‘char*’ [-Wsizeof-array-argument]
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(177,29): warning :   177 |     memset(trame, 0, sizeof(trame));
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(177,29): warning :       |                            ~^~~~~~
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(166,31): message : declared here
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(177,22): warning : argument to ‘sizeof’ in ‘void* memset(void*, int, size_t)’ call is the same expression as the destination; did you mean to provide an explicit length? [-Wsizeof-pointer-memaccess]
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(177,22): warning :   177 |     memset(trame, 0, sizeof(trame));
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(177,22): warning :       |                      ^~~~~~~~~~~~~
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(197,29): warning : ‘sizeof’ on array function parameter ‘trame’ will return size of ‘char*’ [-Wsizeof-array-argument]
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(197,29): warning :   197 |     memset(trame, 0, sizeof(trame));
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(197,29): warning :       |                            ~^~~~~~
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(166,31): message : declared here
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(197,22): warning : argument to ‘sizeof’ in ‘void* memset(void*, int, size_t)’ call is the same expression as the destination; did you mean to provide an explicit length? [-Wsizeof-pointer-memaccess]
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(197,22): warning :   197 |     memset(trame, 0, sizeof(trame));
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(197,22): warning :       |                      ^~~~~~~~~~~~~
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(57,1): warning : control reaches end of non-void function [-Wreturn-type]
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(57,1): warning :    57 | }
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(57,1): warning :       | ^
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(118,1): warning : control reaches end of non-void function [-Wreturn-type]
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(118,1): warning :   118 | }
-C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(118,1): warning :       | ^
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(74,29): warning : ‘sizeof’ on array function parameter ‘trame’ will return size of ‘char*’ [-Wsizeof-array-argument]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(74,29): warning :    74 |     memset(trame, 0, sizeof(trame));//permet de vider la trame
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(74,29): warning :       |                            ~^~~~~~
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(72,45): message : declared here
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(74,22): warning : argument to ‘sizeof’ in ‘void* memset(void*, int, size_t)’ call is the same expression as the destination; did you mean to provide an explicit length? [-Wsizeof-pointer-memaccess]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(74,22): warning :    74 |     memset(trame, 0, sizeof(trame));//permet de vider la trame
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(74,22): warning :       |                      ^~~~~~~~~~~~~
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(81,29): warning : ‘sizeof’ on array function parameter ‘trame’ will return size of ‘char*’ [-Wsizeof-array-argument]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(81,29): warning :    81 |     memset(trame, 0, sizeof(trame));
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(81,29): warning :       |                            ~^~~~~~
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(72,45): message : declared here
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(81,22): warning : argument to ‘sizeof’ in ‘void* memset(void*, int, size_t)’ call is the same expression as the destination; did you mean to provide an explicit length? [-Wsizeof-pointer-memaccess]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(81,22): warning :    81 |     memset(trame, 0, sizeof(trame));
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(81,22): warning :       |                      ^~~~~~~~~~~~~
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(90,23): warning : comparison of integer expressions of different signedness: ‘int’ and ‘std::vector<std::__cxx11::basic_string<char> >::size_type’ {aka ‘unsigned int’} [-Wsign-compare]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(90,23): warning :    90 |     for (int i = 0; i < vecTrame.size(); i++)
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(90,23): warning :       |                     ~~^~~~~~~~~~~~~~~~~
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(112,29): warning : ‘sizeof’ on array function parameter ‘trame’ will return size of ‘char*’ [-Wsizeof-array-argument]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(112,29): warning :   112 |     memset(trame, 0, sizeof(trame));
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(112,29): warning :       |                            ~^~~~~~
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(72,45): message : declared here
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(112,22): warning : argument to ‘sizeof’ in ‘void* memset(void*, int, size_t)’ call is the same expression as the destination; did you mean to provide an explicit length? [-Wsizeof-pointer-memaccess]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(112,22): warning :   112 |     memset(trame, 0, sizeof(trame));
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(112,22): warning :       |                      ^~~~~~~~~~~~~
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(124,29): warning : ‘sizeof’ on array function parameter ‘trame’ will return size of ‘char*’ [-Wsizeof-array-argument]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(124,29): warning :   124 |     memset(trame, 0, sizeof(trame));
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(124,29): warning :       |                            ~^~~~~~
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(121,36): message : declared here
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(124,22): warning : argument to ‘sizeof’ in ‘void* memset(void*, int, size_t)’ call is the same expression as the destination; did you mean to provide an explicit length? [-Wsizeof-pointer-memaccess]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(124,22): warning :   124 |     memset(trame, 0, sizeof(trame));
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(124,22): warning :       |                      ^~~~~~~~~~~~~
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(132,29): warning : ‘sizeof’ on array function parameter ‘trame’ will return size of ‘char*’ [-Wsizeof-array-argument]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(132,29): warning :   132 |     memset(trame, 0, sizeof(trame));
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(132,29): warning :       |                            ~^~~~~~
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(121,36): message : declared here
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(132,22): warning : argument to ‘sizeof’ in ‘void* memset(void*, int, size_t)’ call is the same expression as the destination; did you mean to provide an explicit length? [-Wsizeof-pointer-memaccess]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(132,22): warning :   132 |     memset(trame, 0, sizeof(trame));
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(132,22): warning :       |                      ^~~~~~~~~~~~~
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(143,29): warning : ‘sizeof’ on array function parameter ‘trame’ will return size of ‘char*’ [-Wsizeof-array-argument]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(143,29): warning :   143 |     memset(trame, 0, sizeof(trame));
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(143,29): warning :       |                            ~^~~~~~
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(121,36): message : declared here
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(143,22): warning : argument to ‘sizeof’ in ‘void* memset(void*, int, size_t)’ call is the same expression as the destination; did you mean to provide an explicit length? [-Wsizeof-pointer-memaccess]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(143,22): warning :   143 |     memset(trame, 0, sizeof(trame));
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(143,22): warning :       |                      ^~~~~~~~~~~~~
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(154,23): warning : comparison of integer expressions of different signedness: ‘int’ and ‘std::vector<std::__cxx11::basic_string<char> >::size_type’ {aka ‘unsigned int’} [-Wsign-compare]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(154,23): warning :   154 |     for (int i = 0; i < vecTrame.size(); i++)
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(154,23): warning :       |                     ~~^~~~~~~~~~~~~~~~~
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(164,29): warning : ‘sizeof’ on array function parameter ‘trame’ will return size of ‘char*’ [-Wsizeof-array-argument]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(164,29): warning :   164 |     memset(trame, 0, sizeof(trame));
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(164,29): warning :       |                            ~^~~~~~
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(121,36): message : declared here
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(164,22): warning : argument to ‘sizeof’ in ‘void* memset(void*, int, size_t)’ call is the same expression as the destination; did you mean to provide an explicit length? [-Wsizeof-pointer-memaccess]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(164,22): warning :   164 |     memset(trame, 0, sizeof(trame));
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(164,22): warning :       |                      ^~~~~~~~~~~~~
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(172,29): warning : ‘sizeof’ on array function parameter ‘trame’ will return size of ‘char*’ [-Wsizeof-array-argument]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(172,29): warning :   172 |     memset(trame, 0, sizeof(trame));
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(172,29): warning :       |                            ~^~~~~~
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(170,31): message : declared here
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(172,22): warning : argument to ‘sizeof’ in ‘void* memset(void*, int, size_t)’ call is the same expression as the destination; did you mean to provide an explicit length? [-Wsizeof-pointer-memaccess]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(172,22): warning :   172 |     memset(trame, 0, sizeof(trame));
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(172,22): warning :       |                      ^~~~~~~~~~~~~
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(181,29): warning : ‘sizeof’ on array function parameter ‘trame’ will return size of ‘char*’ [-Wsizeof-array-argument]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(181,29): warning :   181 |     memset(trame, 0, sizeof(trame));
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(181,29): warning :       |                            ~^~~~~~
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(170,31): message : declared here
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(181,22): warning : argument to ‘sizeof’ in ‘void* memset(void*, int, size_t)’ call is the same expression as the destination; did you mean to provide an explicit length? [-Wsizeof-pointer-memaccess]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(181,22): warning :   181 |     memset(trame, 0, sizeof(trame));
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(181,22): warning :       |                      ^~~~~~~~~~~~~
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(202,29): warning : ‘sizeof’ on array function parameter ‘trame’ will return size of ‘char*’ [-Wsizeof-array-argument]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(202,29): warning :   202 |     memset(trame, 0, sizeof(trame));
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(202,29): warning :       |                            ~^~~~~~
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(170,31): message : declared here
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(202,22): warning : argument to ‘sizeof’ in ‘void* memset(void*, int, size_t)’ call is the same expression as the destination; did you mean to provide an explicit length? [-Wsizeof-pointer-memaccess]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(202,22): warning :   202 |     memset(trame, 0, sizeof(trame));
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(202,22): warning :       |                      ^~~~~~~~~~~~~
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(58,1): warning : control reaches end of non-void function [-Wreturn-type]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(58,1): warning :    58 | }
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(58,1): warning :       | ^
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(119,1): warning : control reaches end of non-void function [-Wreturn-type]
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(119,1): warning :   119 | }
+C:\Users\trichen\Documents\ProjetRuche\projetRucheFinal\Gps.cpp(119,1): warning :       | ^
   Liaison des objets
   ProjetRucheEnvoyerDonneesDemande.vcxproj -> C:\Users\trichen\Documents\ProjetRuche\ProjetRucheEnvoyerDonneesDemande\bin\ARM\Debug\ProjetRucheEnvoyerDonneesDemande.out

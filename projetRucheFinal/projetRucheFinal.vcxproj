@@ -80,6 +80,7 @@
   <ItemGroup>
     <ClCompile Include="Accelerometre.cpp" />
     <ClCompile Include="Capteur.cpp" />
+    <ClCompile Include="GestionBalance.cpp" />
     <ClCompile Include="Gps.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="serialib.cpp" />
@@ -88,6 +89,7 @@
   <ItemGroup>
     <ClInclude Include="Accelerometre.h" />
     <ClInclude Include="Capteur.h" />
+    <ClInclude Include="GestionBalance.h" />
     <ClInclude Include="Gps.h" />
     <ClInclude Include="serialib.h" />
     <ClInclude Include="smbus.h" />
