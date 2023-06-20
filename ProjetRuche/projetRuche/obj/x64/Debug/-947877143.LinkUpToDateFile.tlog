@@ -1,1 +1,0 @@
-g++ -o "/home/pi/projects/projetRuche/bin/x64/Debug/projetRuche.out" -Wl,--no-undefined -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack /home/pi/projects/projetRuche/obj/x64/Debug/main.o
